@@ -1,0 +1,60 @@
+<div class="table">
+<div class="tableItem">
+<table>
+  <thead class="sticky">
+    <tr>
+      <th>&#10003;</th>
+      <th>Dungeon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (var i=0; i<dungeons.length; i++) {%>
+    <tr>
+        
+      <td><input type="checkbox" data-id="<%= dungeons[i]._id %>" id="" name="" class="checkbox"></td>
+      <td>
+        
+          <ul>
+            <li>Name:   <span class="info"><%= dungeons[i].name %></span></li>
+            <li>Boss:   <span class="info"><%= dungeons[i].boss %></span></li>
+            <li>Type:   <span class="info"><%= dungeons[i].type %></span></li>
+            <li>Keys Needed:  <span class="info"><%= dungeons[i].keys %></span></li>
+          </ul>
+        
+      </td>
+      
+    </tr>
+    <% } %>
+  </tbody>
+  </table>
+</div>
+
+<div class="tableItem">
+  <table>
+    <thead class="sticky">
+      <tr>
+        <th>&#10003;</th>
+        <th>Bosses</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i=0; i<bosses.length; i++) {%>
+      <tr>
+        
+      <td><input type="checkbox" data-id="<%= bosses[i]._id %>" id="" name="" class="checkbox"></td>
+      <td>
+        
+          <ul>
+            <li>Name:   <span class="info"><%= bosses[i].name %></span></li>
+            <li>Location:   <span class="info"><%= bosses[i].location %></span></li>
+            <li>Night Only?:  <span class="info"><%= bosses[i].night ? "Yes" : "No" %></span></li>
+          </ul>
+        
+      </td>
+      
+    </tr>
+    <% } %>
+  </tbody>
+  </table>
+</div>
+  </div>

@@ -1,0 +1,166 @@
+
+
+/* html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+} */
+
+html {
+	font-size: 62.5%;
+}
+
+header > div {
+	display: flex;
+	justify-content: flex-end;
+}
+
+div.login {
+	width: 50%;
+}
+
+span.header {
+	font-size: 2rem;
+	padding: 1rem;
+}
+
+html, button {
+    background-color: #181A1B;
+    color: #C8A968;
+	font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button.region:hover, .current {
+	background-color: #C8A968;
+	color: #0F1111;
+}
+
+h2 {
+	text-align: center;
+	color: #C8A968;
+	font-size: 4rem;
+}
+
+div {
+	margin:auto;
+	height:auto;
+}
+
+input {
+	width: 50%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+    width: 65%;
+    justify-content: space-evenly;
+}
+
+.nav {
+	display: flex;
+    flex-flow: column wrap;
+	justify-content: space-evenly;
+	width:40%;
+}
+
+
+button {
+	border: 1px solid #C8A968;
+	padding: 10px;
+	margin: 10px;
+	background-color: #0F1111;
+	font-weight: 700;
+	font-size: 2rem;
+}
+
+table {
+	align-self: flex-start;
+	width: 100%;
+	font-size: 2rem;
+}
+
+th, span.filterbtn {
+	text-align: center;
+	background-color: #0F1111;
+	position: sticky;
+	top: 0;
+	font-size: 2rem;
+}
+
+div.table {
+	display: flex;
+	width: 70%;
+	justify-content: center;
+	
+}
+
+
+div.tableItem {
+	width: 50%;
+	margin:50px;
+	overflow-y: auto;
+	height: 500px;
+}
+
+li {
+	font-weight: 200;
+	font-style: italic;
+	list-style: none;
+	
+}
+
+span.info {
+	font-weight: 400;
+	font-style: normal;
+}
+
+div.login > h2 {
+	text-align: start;
+}
