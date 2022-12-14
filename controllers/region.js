@@ -10,13 +10,6 @@ module.exports = {
             const dungeons = await dungeon.find( { region: req.params.region } );
             const bosses = await boss.find( { region: req.params.region } );
             res.render('region', { dungeons: dungeons, bosses: bosses });
-
-            // get array of user's completed items 
-            if (req.user && req.user._id) {
-              const user = await User.findById(req.user._id);
-              const completed = user.completedItems
-              // console.log(completed)
-            // res.json({ completed });
             }
 
         } catch (err) {
