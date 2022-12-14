@@ -10,7 +10,7 @@ module.exports = {
             const dungeons = await dungeon.find( { region: req.params.region } );
             const bosses = await boss.find( { region: req.params.region } );
             res.render('region', { dungeons: dungeons, bosses: bosses });
-            }
+            
 
         } catch (err) {
             console.log(err);
