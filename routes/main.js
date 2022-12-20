@@ -10,7 +10,7 @@ router.get('/login', userController.getLogin)
 router.post('/login', userController.postLogin)    
 router.post('/signup', userController.postSignup)
 
-// router.get('/logout', userController.logout)    
+router.get('/logout', userController.logout)    
 
 
 

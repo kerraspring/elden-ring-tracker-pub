@@ -14,27 +14,38 @@ const session = require('express-session')
         }
     }
 
-    exports.postLogin = async (req, res, next) => {
-      passport.authenticate('local',
-      (err, user, info) => {
-        console.log('login', user)
-        if (err) {
-          return next(err);
-        }
+    exports.postLogin = async (req, res) => {
+    //   console.log(req.body)
+        try {
+            // console.log(req.body)
+      passport.authenticate("local",{
+        successRedirect: "/",
+        failureRedirect: "/login"
+    }), function(req, res){
+        console.log(req.body)
+    }} catch (err) {
+        console.log(err)
+    }
+      // passport.authenticate('local',
+      // (err, user, info) => {
+      //   console.log('login', user)
+      //   if (err) {
+      //     return next(err);
+      //   }
     
-        if (!user) {
-          return res.redirect('/login');
-        }
+      //   if (!user) {
+      //     return res.redirect('/login');
+      //   }
     
-        req.logIn(user, function(err) {
-          if (err) {
-            return next(err);
-          }
+      //   req.logIn(user, function(err) {
+      //     if (err) {
+      //       return next(err);
+      //     }
     
-          return res.redirect('/');
-        });
+      //     return res.redirect('/');
+      //   });
     
-      })(req, res, next);
+      // })
     };
 
     exports.postSignup = async (req, res) => {
@@ -57,14 +68,14 @@ const session = require('express-session')
         }
     }
 
-    // exports.logout = (req, res) => {
-    //     req.logout(() => {
-    //       console.log('User has logged out.')
-    //     })
-    //     req.session.destroy((err) => {
-    //       if (err)
-    //         console.log("Error : Failed to destroy the session during logout.", err);
-    //       req.user = null;
-    //       res.redirect("/");
-    //     });
-    //   };
+    exports.logout = (req, res) => {
+        req.logout(() => {
+          console.log('User has logged out.')
+        })
+        req.session.destroy((err) => {
+          if (err)
+            console.log("Error : Failed to destroy the session during logout.", err);
+          req.user = null;
+          res.redirect("/");
+        });
+      };
