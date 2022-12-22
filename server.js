@@ -8,13 +8,8 @@ const MongoStore = require('connect-mongo')
 const connectDB = require('./config/database');
 const regionRoutes = require("./routes/region");
 const mainRoutes = require('./routes/main')
-const passportLocalMongoose = require('passport-local-mongoose');
 
-
-const initializePassport = require('./config/passport');
-const User = require("./models/User");
-const cookieSession = require('cookie-session');
-const initialize = require("./config/passport");
+require("./config/passport")(passport);
 
 
 //Body Parsing
@@ -35,7 +30,6 @@ app.use(passport.session())
 
 app.use(flash())
 
-initializePassport(passport)
 
 //use public folder
 app.use(express.static(__dirname + '/public'));

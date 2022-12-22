@@ -1,42 +1,39 @@
-const LocalStrategy = require('passport-local').Strategy
+const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
 const User = require('../models/User')
-const userSchema = User._userSchema.statics;
 
-
-
-function initialize(passport) {
-  const authenticateUser = async (email, password, done) => {
-      const user = await User.find(User => User.email === email)
-      console.log(email, user)
-      if (user == null) {
-        return done(null, false, {message: 'No user with that email'})
+module.exports = function(passport) {
+    passport.use(new GoogleStrategy({
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: '/auth/google/callback'
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      const newUser = {
+        googleId: profile.id,
+        displayName: profile.displayName,
+        completedItems: []
       }
 
       try {
-        if (await bcrypt.compare(password, user.password)) {
+        let user = await User.findOne({ googleId: profile.id })
 
+        if(user) {
+          done(null, user)
         } else {
-          return done(null, false, {message: 'Incorrect Password'})
+          user = await User.create(newUser)
+          done(null, user)
         }
-      } catch(err) {
-        return done(err)
+      } catch (err) {
+        console.error(err)
       }
-  }
-  // passport.use(userSchema.createStrategy());
-  // passport.serializeUser(userSchema.serializeUser());
-  // passport.deserializeUser(userSchema.deserializeUser());
-  passport.use(new LocalStrategy({usernameField: 'email'}, authenticateUser))
+    }));
 
-  // turns a user into a unique identifier used for the session (i.e. its _id)
-  passport.serializeUser((user, done) => done(undefined, user._id))
+    passport.serializeUser((user, done) => {
+      done(null, user.id)
+    });
 
-  // takes a unique identifier from the session and returns a user from that _id
-  passport.deserializeUser(async (id, done) => {
-    const user = await User.findById(id)
-    done(undefined, user)
-  })
+    passport.deserializeUser((id, done) => {
+      User.findById(id, (err, user) => done(err, user))
+    });
 }
-
-module.exports = initialize

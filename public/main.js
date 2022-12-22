@@ -13,6 +13,8 @@ checkboxes.forEach((checkbox) => {
       markComplete(item);
     });
   });
+
+
   
 async function markComplete(item){
     console.log(item)

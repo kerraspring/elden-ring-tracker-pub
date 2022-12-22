@@ -1,16 +1,24 @@
 const express = require('express')
 const router = express.Router()
-const homeController = require('../controllers/home')  
-const userController = require('../controllers/user')  
+const passport = require('passport')
+const homeController = require('../controllers/home')   
 
 
 router.get('/', homeController.getIndex)
 
-router.get('/login', userController.getLogin)
-router.post('/login', userController.postLogin)    
-router.post('/signup', userController.postSignup)
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }))
 
-router.get('/logout', userController.logout)    
+router.get('/auth/google/callback', passport.authenticate('google', {
+    failureRedirect: '/login'
+}), (req, res) => {
+    res.redirect('/')
+})
+
+
+router.get('/auth/logout', (req, res) => {
+    req.logout()
+    res.redirect('/')
+})    
 
 
 
