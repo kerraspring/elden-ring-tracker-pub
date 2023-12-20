@@ -35,12 +35,15 @@ async function markComplete(item){
 }
 // current region button highlight
 var current = 0;
-for (var i = 0; i < document.links.length; i++) {
-    if (document.links[i].href === document.URL) {
-        current = i;
+
+document.querySelectorAll('.region').forEach(function(button, index) {
+    if (button.querySelector('a').href === document.URL) {
+        current = index;
     }
-}
-document.getElementById(`btn${current}`).className = 'current';
+});
+
+document.getElementById(`btn${current + 1}`).classList.add('current');
+
 
 
 async function addCheck(){

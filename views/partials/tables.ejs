@@ -3,7 +3,7 @@
 <table>
   <thead class="sticky">
     <tr>
-      <th>&#10003;</th>
+      <th class="checkmark-header">&#10003;</th>
       <th>Dungeon</th>
     </tr>
   </thead>
@@ -11,7 +11,7 @@
     <% for (var i=0; i<dungeons.length; i++) {%>
     <tr>
         
-      <td><input type="checkbox" data-id="<%= dungeons[i]._id %>" id="" name="" class="checkbox"></td>
+      <td class="checkbox"><input type="checkbox" data-id="<%= dungeons[i]._id %>" id="" name="" class="checkbox"></td>
       <td>
         
           <ul>
@@ -33,7 +33,7 @@
   <table>
     <thead class="sticky">
       <tr>
-        <th>&#10003;</th>
+        <th class="checkmark-header">&#10003;</th>
         <th>Bosses</th>
       </tr>
     </thead>
@@ -41,7 +41,7 @@
       <% for (var i=0; i<bosses.length; i++) {%>
       <tr>
         
-      <td><input type="checkbox" data-id="<%= bosses[i]._id %>" id="" name="" class="checkbox"></td>
+      <td class="checkbox"><input type="checkbox" data-id="<%= bosses[i]._id %>" id="" name="" class="checkbox"></td>
       <td>
         
           <ul>
